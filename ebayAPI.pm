@@ -506,6 +506,8 @@ __END__
  
 =head1 NAME
 
+
+
  
 eBayAPI - An Simple Interface to XML::EBAY for listing, update and delete items on eBay.
 
@@ -518,8 +520,9 @@ All of the eBay API calls are inherits from the eBay::API class
  
 =head1 SYNOPSIS 
 
+=over 4
  
-#1. Add eBay user credentials use  
+=item B<1. Add eBay user credentials use>  
  
 	my $api = eBayAPI->new( 
 	 
@@ -531,26 +534,26 @@ All of the eBay API calls are inherits from the eBay::API class
 	); 
 	 
 	 
-#2. Add item to eBay listing  
+=item B<2. Add item to eBay listing>
 	 
 	$api->add_item( 
 	 
 		title => 'Item Title', 
 		startprice => 'Item Price', 
 		quantity => 'Item Quantity',	 
-		description =>'Item Descriptionm', 
+		description =>'Item Description', 
 		..... 
 	 
 	); 
 	 
 	 
-#3. Search for a list of categories matching the title query 
+=item B<3. Search for a list of categories matching the title query> 
  
 	$api->find_categories('Title Query'); 
  
 	 
 	 
-#4.  Updates eBay item that has currently been listed 
+=item B<4.  Updates eBay item that has currently been listed> 
 	 
 	$api->update_item( 
 	 
@@ -561,7 +564,7 @@ All of the eBay API calls are inherits from the eBay::API class
 	); 
  
  
-#5. Remove an item listing from eBay for various reasons 
+=item B<5. Remove an item listing from eBay for various reasons>
 	 
 	$object->delete_item( 
 	 
@@ -569,7 +572,8 @@ All of the eBay API calls are inherits from the eBay::API class
 		end_reason => "remove reason" 
 	 
 	); 
-	 
+	
+=back 
  
 =head1 DESCRIPTION 
  
@@ -586,18 +590,14 @@ There's no installation for this module, but however there is prerequisite modul
  
 =head2 Prerequisite Module  
 
-=over
+=over 4
  
-=item * 
+=item * eBay::API - this module can be obtain from L<http://search.cpan.org/~tkeefer/eBay-API/lib/eBay/API.pm|http://search.cpan.org/~tkeefer/eBay-API/lib/eBay/API.pm> 
  
-	 eBay::API - this module can be obtain from 'http://search.cpan.org/~tkeefer/eBay-API/lib/eBay/API.pm'. 
- 
- 
- 
-	* Hash::Case::Lower - module can be obtain from 'http://search.cpan.org/~markov/Hash-Case-1.02/lib/Hash/Case/Lower.pod' 
+=item * Hash::Case::Lower - module can be obtain from L<http://search.cpan.org/~markov/Hash-Case-1.02/lib/Hash/Case/Lower.pod|http://search.cpan.org/~markov/Hash-Case-1.02/lib/Hash/Case/Lower.pod> 
 	 
- 
-	Note: Two of the prerequisite module require to install eBay::API has been corrupted, those are LWP::Parallel and XML - Tidy, you can get a copy of those two modules from 'https://github.com/deng2431/PX3/tree/master/corrupted_modules_ebay-api' and follow the installation instruction on those files. 
+
+B<I<Note:>> Two of the prerequisite module require to install eBay::API has been corrupted, those are LWP::Parallel and XML - Tidy, you can get a copy of those two modules from L<https://github.com/deng2431/PX3/tree/master/corrupted_modules_ebay-api|https://github.com/deng2431/PX3/tree/master/corrupted_modules_ebay-api> and follow the installation instruction on those files.> 
 	 
  
 =back
@@ -608,29 +608,31 @@ There's no installation for this module, but however there is prerequisite modul
  
 Object constructor for all api calls. 
  
-Usage: 
+B<Usage:> 
  
 	ebayAPI->new({args}) 
  
-Arguments:	 
+B<Arguments:>	 
  
 A hash reference containing the following possible arguments: 
-	 
-	apiUrl => the url to the ebay api calls, it need to either the live ebay site('https://api.ebay.com/ws/api.dll') or ebay sandbox ('https://api.sandbox.ebay.com/ws/api.dll'). 
+
+=over 4	
+ 
+=item * C<apiUrl> => the url to the ebay api calls, it need to either the live ebay site('https://api.ebay.com/ws/api.dll') or ebay sandbox (L<https://api.sandbox.ebay.com/ws/api.dll|https://api.sandbox.ebay.com/ws/api.dll>). 
 		 
-	devID = > Developer's ID, received from ebay developer's account that is linked to your ebay account. 
+=item * C<devID> => Developer's ID, received from ebay developer's account that is linked to your ebay account. 
 		 
-	appID = > Application ID, received from ebay developer's account that is linked to your ebay account. 
+=item * C<appID> => Application ID, received from ebay developer's account that is linked to your ebay account. 
 		 
-	certID = > certificate ID, received from ebay developer's account that is linked to your ebay account. 
+=item * C<certID> => certificate ID, received from ebay developer's account that is linked to your ebay account. 
 		 
-	authToken => authentication Token, a token that acts as a password to the linked ebay account, it can be received after the developer and ebay account is linked. 
+=item * C<authToken> => authentication Token, a token that acts as a password to the linked ebay account, it can be received after the developer and ebay account is linked. 
 		 
-	siteID = > Site ID, the ebay country site that you want to use for the api calls. the site ID uses codes for recongnising is in numbers. e.g 0 = US site(.com) and 15 = AUS site(.com.au). 
+=item * C<siteID> = > Site ID, the ebay country site that you want to use for the api calls. the site ID uses codes for recongnising is in numbers. e.g 0 = US site(.com) and 15 = AUS site(.com.au). 
 		 
-	complvl => compatibility level, the level of compatibility you want to test the api calls on, bear in mind not all api calls support the new compatibility and vice-versa. 
+=item * C<complvl> => compatibility level, the level of compatibility you want to test the api calls on, bear in mind not all api calls support the new compatibility and vice-versa. 
 		 
-		 
+=back		 
  
  
 =head2 add_item() 
@@ -638,64 +640,67 @@ A hash reference containing the following possible arguments:
 Add a item to eBay listing. 
  
 	 
-Usage: 
+B<Usage:>
  
 	$api->add_item({args}); 
 	 
-Arguments: 
+B<Arguments:>
+
+=over 4
 	 
-	title => Name of the item as it appears in the listing or search results. Required for most items. 
+=item * C<title> => Name of the item as it appears in the listing or search results. Required for most items. 
 		 
-	quantity => Number of items in the listing 
+=item * C<quantity> => Number of items in the listing 
 		 
-	description => Description of the item 
+=item * C<description> => Description of the item 
 		 
-	startprice => The original price of the item at listing. 
+=item * C<startprice> => The original price of the item at listing. 
 		 
-	countrycode => Which country the item will be listed on. See link a list of country code: URL :  http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/countrycodetype.html 
+=item * C<countrycode> => Which country the item will be listed on. See link a list of country code: L<http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/countrycodetype.html|http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/countrycodetype.html> 
 		 
-	currencycode => The preferred currency for payment. See link a list of currency code: URL : http://developer.ebay.com/devzone/shopping/docs/callref/types/currencycodetype.html 
+=item * C<currencycode> => The preferred currency for payment. See link a list of currency code: L<http://developer.ebay.com/devzone/shopping/docs/callref/types/currencycodetype.html|http://developer.ebay.com/devzone/shopping/docs/callref/types/currencycodetype.html> 
 		 
-	listingduration => The amount of time the item will be listed on eBay. See link for available days. URL: http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ListingDurationCodeType.html 
+=item * C<listingduration> => The amount of time the item will be listed on eBay. See link for available days: L<http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ListingDurationCodeType.html|http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ListingDurationCodeType.html>
 		 
-	location => The location of the item. 
+=item * C<location> => The location of the item. 
 		 
-	postalcode => post of the location which the item is located 
+=item * C<postalcode> => post of the location which the item is located 
 		 
-	paymentmethod => Specific whicch payment method will be accepted. for a list of payment methods see url. URL: http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/BuyerPaymentMethodCodeType.html 
+=item * C<paymentmethod> => Specific whicch payment method will be accepted. for a list of payment methods see : L<http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/BuyerPaymentMethodCodeType.html|http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/BuyerPaymentMethodCodeType.html>
 		 
-	conditioncode => update the item condition, only input condition ID is exceptable. An list of ID is available at 'http://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html' 
+=item * C<conditioncode> => update the item condition, only input condition ID is exceptable. An list of ID is available at: L<http://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html|http://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html>
 		 
-	dispatchtimemax => The amount of time it will take for the item to be dispatched. 
+=item * C<dispatchtimemax> => The amount of time it will take for the item to be dispatched. 
 		 
-	listingtype => The type of listing the item will be under, Buy it now or Auction. For a full list see url. URL: http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ListingTypeCodeType.html 
+=item * C<listingtype> => The type of listing the item will be under, Buy it now or Auction. For a full list see url: L<http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ListingTypeCodeType.html|http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ListingTypeCodeType.html>
 		 
-	payPalemailaddress => THe paypal email that will be receiving the payments from the buyers, the paypal email musted be linked with the seller's eBay account. 
+=item * C<payPalemailaddress> => THe paypal email that will be receiving the payments from the buyers, the paypal email musted be linked with the seller's eBay account. 
 		 
-	returnsacceptedoption => Specific whether return is acceptable for the listing item. 
+=item * C<returnsacceptedoption> => Specific whether return is acceptable for the listing item. 
 		 
-	refundoption => Specific how will the refund be made if a item were to be returned. 
+=item * C<refundoption> => Specific how will the refund be made if a item were to be returned. 
 		 
-	returnswithinoption => The amount of time an item can be return to the seller. 
+=item * C<returnswithinoption> => The amount of time an item can be return to the seller. 
 		 
-	returnpolicydetail => An description of what the return policy are. 
+=item * C<returnpolicydetail> => An description of what the return policy are. 
 		 
-	shippingcostpaidbyoption => Specific who will paid for the return cost of the item. 
+=item * C<shippingcostpaidbyoption> => Specific who will paid for the return cost of the item. 
 		 
-	shippingtype => The shipping cost model offered by the seller. For a full list of option see url. URL: http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/shippingtypecodetype.html 
+=item * C<shippingtype> => The shipping cost model offered by the seller. For a full list of option see url: L<http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/shippingtypecodetype.html|http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/shippingtypecodetype.html>
 		 
-	shippingservice => A shipping service used to ship an item. For a dfull list see url. URL: http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ShippingServiceCodeType.html 
+=item * C<shippingservice> => A shipping service used to ship an item. For a dfull list see url L<http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ShippingServiceCodeType.html|http://developer.ebay.com/devzone/xml/docs/reference/ebay/types/ShippingServiceCodeType.html>
 		 
-	Shippingservicecost => Specific the cose of the shipping service. 
+=item * C<Shippingservicecost> => Specific the cose of the shipping service. 
 		 
-	shippingservicepriority => Specific whether this item will be shipped using priority service. code: 1 = Priority, 0 = non-Priority 
+=item * C<shippingservicepriority> => Specific whether this item will be shipped using priority service. code: 1 = Priority, 0 = non-Priority 
 		 
-	pictureurl => Set a item's picture using a external link 
+=item * C<pictureurl> => Set a item's picture using a external link 
 		 
-	setthumbnail => set the item's thumbnail using a external link 
+=item * C<setthumbnail> => set the item's thumbnail using a external link 
 		 
- 
-Return: 
+=back
+
+B<Return:> 
  
 	Item's ID upon success. 
 		 
@@ -704,63 +709,73 @@ Return:
 Update an item from ebay listing that is currently active. An fee might occur for updating an item. 
  
 	 
-Usage: 
+B<Usage:>
  
 	$api->update_item({args}); 
 	 
-Arguments: 
+B<Arguments:> 
+
+=over 4
  
-	itemID => Item's ID for updating 
+=item * C<itemID> => Item's ID for updating 
 	 
-	title => alter the item's title 
+=item * C<title> => alter the item's title 
 	 
-	quantity => update the available quantity for the item 
+=item * C<quantity> => update the available quantity for the item 
 	 
-	description => alter the description of the item 
+=item * C<description> => alter the description of the item 
 	 
-	startprice => change the item's price 
+=item * C<startprice> => change the item's price 
 	 
-	pictureurl => update the item's picture using external link. 
+=item * C<pictureurl> => update the item's picture using external link. 
 	 
-	setthumbnail => change the item's thumbnail 
+=item * C<setthumbnail> => change the item's thumbnail 
 	 
-	conditioncode => update the item condition, only input condition ID is exceptable. An list of ID is available at 'http://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html' 
+=item * C<conditioncode> => update the item condition, only input condition ID is exceptable. An list of ID is available at L<http://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html|http://developer.ebay.com/Devzone/finding/CallRef/Enums/conditionIdList.html> 
+
+=back
  
- 
- 
- 
-		 
- 
+
 =head2 find_categories() 
  
 Search eBay category system and return the best matching categories for the keyword/query.  
  
-Usage: 
+B<Usage:>
  
 	$api->find_categories("query") 
  
-Return: 
+B<Return:> 
  
 Once the call has been excuted it will return two properties upon successfuly result. 
- 
-$api->list_categories 
+
+=over 4
+
+=item 1.$api->list_categories 
 		 
 	Return a hash of categories. Return 0 upon failure. 
 		Hash Keys: 
 			cat_id => Category ID  
 			cat_name => Category Name 
+
+=over 10
 			 
-		Example: 
-			foreach my $cat (@{$api->list_categories}){ 
+=item		 B<I<Example:>>
+
+=back
+
+	foreach my $cat (@{$api->list_categories}){ 
 					 
-			$cat->{cat_id}; 
-			$cat->{cat_name}; 
+		$cat->{cat_id}; 
+		$cat->{cat_name}; 
 					 
-			} 
+		} 
+
  
-$api->first_category 
+=item 2.$api->first_category 
+
+=back
 	 
-		Return the first category ID which contain the most suitable category for listing with the entered keyword/query. Return 0 upon failure. 
+Return the first category ID which contain the most suitable category for listing with the entered keyword/query. Return 0 upon failure. 
 		 
 	 
  
@@ -770,26 +785,35 @@ $api->first_category
 Remove an item from ebay listing that is currently active. 
  
 	 
-Usage: 
- 
-	$api->delete_item({args}); 
+B<Usage:>
+
+
+
+$api->delete_item({args}); 
+
+
 	 
-Arguments: 
- 
-	itemID => Item's ID requesting for removal 
-	end_reason => "End Reason Code" 
+B<Arguments:>
+
+=over 4
+
+=item * C<itemID> => Item's ID requesting for removal 
+
+=item * C<end_reason> => "End Reason Code" 
 	 
-	Note: A list of end reason code is available at 'http://search.cpan.org/~tkeefer/eBay-API/lib/eBay/API/XML/DataType/Enum/EndReasonCodeType.pm'. 
+=item * B<I<Note:>> A list of end reason code is available at L<http://search.cpan.org/~tkeefer/eBay-API/lib/eBay/API/XML/DataType/Enum/EndReasonCodeType.pm|http://search.cpan.org/~tkeefer/eBay-API/lib/eBay/API/XML/DataType/Enum/EndReasonCodeType.pm>
 	 
 	 
- 
- 
+=back
 	 
  
 =head2 Common response (output) properties 
  
+
 $api -> get_ack() 
- 
+
+
+
 	Return 1 for successful call and 0 for failure. 
 	 
  
@@ -803,18 +827,23 @@ $api->error()
 			short_message - brief message of the error 
 			long_message - details message of the error 
 			 
-		Example: 
-			 foreach my $error (@{$api->error()}) { 
+=over 10
+			 
+=item		 B<I<Example:>>
+
+=back
+
+	foreach my $error (@{$api->error()}) { 
 			  
-				$error->{code}: 
-				$error->{short_message} 
-				$error->{long_message} 
+		$error->{code}: 
+		$error->{short_message} 
+		$error->{long_message} 
 			  
-			 } 
+	} 
  
  
- 
-	 
-		 
+
+	
+=cut	 
 		
 
